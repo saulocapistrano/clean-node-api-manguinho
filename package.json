@@ -1,0 +1,19 @@
+{
+  "name": "clean-node-api-manguinho",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/saulocapistrano/clean-node-api-manguinho.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/saulocapistrano/clean-node-api-manguinho/issues"
+  },
+  "homepage": "https://github.com/saulocapistrano/clean-node-api-manguinho#readme"
+}
