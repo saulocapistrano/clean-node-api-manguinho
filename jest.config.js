@@ -1,4 +1,5 @@
 module.exports = {
   coverageDirectory:"coverage",
-  testEnvironMent:"node"  
+  testEnvironMent:"node", 
+  collectCovegareFrom:['**/**/*.js']  
 }
