@@ -7,15 +7,11 @@
     "test": "jest --silent --colors --noStackTrace --passWithNoTests",
     "test:unit": "npm test -- --watchAll -c jest-unit-config.js",
     "test:integration": "npm test -- --watch -c jest-integartion-config.js",
-    "test:staged": "npm test -- --findRelatedTests ", 
+    "test:staged": "npm test -- --findRelatedTests ",
     "test:ci": "npm test -- --coverage"
   },
-  "lint-staged": {
-    
-  },
-  "husky": {
-    
-  },
+  "lint-staged": {},
+  "husky": {},
   "repository": {
     "type": "git",
     "url": "git+https://github.com/saulocapistrano/clean-node-api-manguinho.git"
@@ -31,5 +27,8 @@
     "jest": "^29.5.0",
     "lint-staged": "^13.2.3",
     "standard": "^17.1.0"
+  },
+  "dependencies": {
+    "validator": "^13.9.0"
   }
 }
