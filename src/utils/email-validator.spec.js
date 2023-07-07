@@ -1,12 +1,7 @@
 // Esse teste deve garantir que essa classe do email validator está fazendo a integração 
 // com a biblioteca de forma correta
+const EmailValidator = require('./email-validator')
 const validator = require('validator')
-class EmailValidator {
-   isValid (email) {
-        return validator.isEmail(email)
-    }
-}
-
 const makeSut = () =>{
     return new EmailValidator( )
 }
