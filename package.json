@@ -4,8 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "jest --watchAll",
-    "test:staged": "jest --passWhitNoTests"
+    "test": "jest --watchAll --silent --verbose --colors --noStackTrace",
+    "test:staged": "jest --passWhitNoTests --findRelatedTests --silent --noStackTrace", 
+    "test:ci": "jest --coverage"
   },
   "lint-staged": {
     
