@@ -2,6 +2,7 @@
 // com a biblioteca de forma correta
 const EmailValidator = require('./email-validator')
 const validator = require('validator')
+
 const makeSut = () =>{
     return new EmailValidator( )
 }
