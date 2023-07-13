@@ -2,13 +2,15 @@ const {MissingParamError} = require('../../utils/errors')
 const AuthUseCase = require('./auth-usecase')
 
 const makeSut = () => {
-    class EncrypterSpay{
+    class EncrypterSpy{
         async compare(password, hashedPassword){
             this.password = password
             this.hashedPassword = hashedPassword
+            return this.isValid
         }
     }
-    const encrypterSpay = new EncrypterSpay()
+    const encrypterSpy = new EncrypterSpy()
+    encrypterSpy.isValid = true
     class LoadUserByEmailRepositorySpy {
         async load(email){
             this.email = email
@@ -19,11 +21,11 @@ const makeSut = () => {
     loadUserByEmailRepositorySpy.user = {
         password:'hashed_password'
     }
-    const sut = new AuthUseCase(loadUserByEmailRepositorySpy, encrypterSpay)
+    const sut = new AuthUseCase(loadUserByEmailRepositorySpy, encrypterSpy)
     return {
         sut,
         loadUserByEmailRepositorySpy, 
-        encrypterSpay
+        encrypterSpy
     }
 }
 
@@ -66,16 +68,18 @@ describe('Auth UseCase', ()=>{
     })
     
     test('Should return null if an invalid password is provided', async () => {
-        const { sut } = makeSut()
+        const { sut, encrypterSpy } = makeSut()
+        encrypterSpy.isValid = false
         const accessToken = await sut.auth('valid_email@mail.com','invalid_password')
         expect(accessToken).toBeNull()
     })
     
     test('Should call Encrypter with correct values', async () => {
-        const { sut, loadUserByEmailRepositorySpy, encrypterSpay } = makeSut()
+        const { sut, loadUserByEmailRepositorySpy, encrypterSpy } = makeSut()
         await sut.auth('valid_email@mail.com','any_password')
-        expect(encrypterSpay.password).toBe(any_password)
-        expect(encrypterSpay.hashedPassword).toBe(loadUserByEmailRepositorySpy.user.password)
+        expect(encrypterSpy.password).toBe('any_password')
+        expect(encrypterSpy.hashedPassword).toBe(loadUserByEmailRepositorySpy.user.password)
     })
-    
+  
+
 })
